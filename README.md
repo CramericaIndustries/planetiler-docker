@@ -1,5 +1,9 @@
 # planetiler-docker
-Docker container to run planetiler, generating OpenStreetMap vector tiles in mbtiles format
+Docker container to generate open-street-map vector mbtiles, using planetiler.  
+  
+Project repo: https://github.com/onthegomap/planetiler  
+Blog post: https://medium.com/@onthegomap/helping-sustain-open-maps-on-the-web-dc419f3af75d  
+Aditional scripts: https://github.com/ZeLonewolf/planetiler-scripts
 
 # tldr; Quick Start
 Render whole planet using 100GB of RAM...  

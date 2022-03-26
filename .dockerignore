@@ -1,0 +1,5 @@
+output/*
+sources/*
+*.mbtiles
+*.pbf
+*.zip

@@ -1,0 +1,74 @@
+# Set AREANAME environment variable via command line like so...
+# docker-compose run -d --rm -e AREANAME=monaco -e RAM_GB=2 --name=pt-monaco planetiler
+# show logs
+# docker logs -f pt-monaco
+
+# Monaco is default Area
+# for area names @see https://download.geofabrik.de/europe.html
+
+# @see https://github.com/onthegomap/planetiler
+
+version: '3'
+services:
+  planetiler:
+    build: .
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=monaco
+      - RAM_GB=1
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+  gen-planet:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=planet
+      - RAM_GB=100
+      - BOUNDS="--bounds=world"
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+  gen-monaco:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=monaco
+      - RAM_GB=1
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+  gen-switzerland:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=switzerland
+      - RAM_GB=4
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+  gen-sweden:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=sweden
+      - RAM_GB=4
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+
+  gen-massachusetts:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=massachusetts
+      - RAM_GB=4
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+

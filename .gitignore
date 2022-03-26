@@ -1,0 +1,11 @@
+sources/*
+output/*
+
+*.pbf
+*.mbtiles
+*.zip
+
+
+# don’t ignore keep files
+!.keep
+!.gitkeep

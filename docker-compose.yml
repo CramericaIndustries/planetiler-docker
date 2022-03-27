@@ -32,6 +32,16 @@ services:
       - ./sources:/tmp/data/sources
 
 
+  gen-great-britain:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=great-britain
+      - RAM_GB=12
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
   gen-monaco:
     image: planetiler:0.3.0
     environment:

@@ -8,6 +8,8 @@
 echo "!!! generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
 
 java 	-Xmx${RAM_GB}g \
+		-Xms${RAM_GB}g \
+		-XX:OnOutOfMemoryError="kill -9 %p" \
 		-jar /tmp/planetiler.jar \
 			--download \
 			--fetch-wikidata \

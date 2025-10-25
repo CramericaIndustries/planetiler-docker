@@ -26,6 +26,6 @@ java 	-Xmx${RAM_GB}g \
 			${BOUNDS} \
 			--area=${AREANAME}
 
-echo "!!! generated vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
+echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
 
 mv -f "/tmp/data/output.mbtiles" "/output/${AREANAME}.mbtiles"

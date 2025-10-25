@@ -82,3 +82,23 @@ services:
       - ./output:/output
       - ./sources:/tmp/data/sources
 
+
+  gen-portugal:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=portugal
+      - RAM_GB=4
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+  gen-us-pacific:
+    image: planetiler:0.3.0
+    environment:
+      - AREANAME=us-pacific
+      - RAM_GB=4
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+

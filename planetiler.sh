@@ -24,6 +24,8 @@ java 	-Xmx${RAM_GB}g \
 			--download-chunk-size-mb=1000 \
 			--nodemap-type=sparsearray \
 			--nodemap-storage=ram \
+			--output=/output/${AREANAME}.${FORMAT:-mbtiles}\
+			--force \
 			${BOUNDS} \
 			--area=${AREANAME}
 
@@ -36,5 +38,3 @@ minutes=$(( (elapsed % 3600) / 60 ))
 seconds=$(( elapsed % 60 ))
 
 echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM in ${days}d ${hours}h ${minutes}min ${seconds}s"
-
-mv -f "/tmp/data/output.mbtiles" "/output/${AREANAME}.mbtiles"

@@ -36,32 +36,33 @@ services:
 
 
   gen-planet:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=planet
       - RAM_GB=100
       - BOUNDS="--bounds=world"
 
   gen-great-britain:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=great-britain
       - RAM_GB=12
 
   gen-monaco:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=monaco
       - RAM_GB=1
+      - FORMAT=pmtiles
 
   gen-switzerland:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=switzerland
       - RAM_GB=4
 
   gen-sweden:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=sweden
       - RAM_GB=4
@@ -69,21 +70,22 @@ services:
 
 
   gen-massachusetts:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=massachusetts
       - RAM_GB=4
+      - FORMAT=pmtiles
 
 
   gen-portugal:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=portugal
       - RAM_GB=4
 
 
   gen-us-pacific:
-    <<: *gen-base
+    <<: *gen-TEMPLATE
     environment:
       - AREANAME=us-pacific
       - RAM_GB=4

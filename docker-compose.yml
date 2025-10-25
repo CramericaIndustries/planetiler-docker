@@ -17,106 +17,73 @@ services:
       dockerfile: Dockerfile
       args:
         PLANETILER_VERSION: 0.9.2
-    image: planetiler:0.9.2
+    image: planetiler:0.9.2 # defines the name of the image which is build from the Dockerfile
     volumes:
       - ./output:/output
       - ./sources:/tmp/data/sources
     command: ["true"]
 
-  gen-planet:
+
+  # yml base template for the gen-xyz services
+  .gen-TEMPLATE: &gen-TEMPLATE
     image: planetiler:0.9.2
     depends_on:
-      - planetiler    
+      - planetiler
+    volumes:
+      - ./output:/output
+      - ./sources:/tmp/data/sources
+
+
+
+  gen-planet:
+    <<: *gen-base
     environment:
       - AREANAME=planet
       - RAM_GB=100
       - BOUNDS="--bounds=world"
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
-
 
   gen-great-britain:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=great-britain
       - RAM_GB=12
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
-
 
   gen-monaco:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=monaco
       - RAM_GB=1
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
-
 
   gen-switzerland:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=switzerland
       - RAM_GB=4
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
-
 
   gen-sweden:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=sweden
       - RAM_GB=4
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
 
 
 
   gen-massachusetts:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=massachusetts
       - RAM_GB=4
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
 
 
   gen-portugal:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=portugal
       - RAM_GB=4
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
 
 
   gen-us-pacific:
-    image: planetiler:0.9.2
-    depends_on:
-      - planetiler 
+    <<: *gen-base
     environment:
       - AREANAME=us-pacific
       - RAM_GB=4
-    volumes:
-      - ./output:/output
-      - ./sources:/tmp/data/sources
-

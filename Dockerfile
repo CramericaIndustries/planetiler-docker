@@ -1,4 +1,5 @@
-FROM openjdk:17.0.2-jdk-buster
+FROM openjdk:26-jdk-trixie
+
 
 WORKDIR /tmp
 

@@ -6,6 +6,7 @@
 # @see avilable-options.txt, for all possible planetiler.jar parameters
 
 echo "!!! generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
+start_time=$(date +%s)
 
 java 	-Xmx${RAM_GB}g \
 		-Xms${RAM_GB}g \
@@ -26,6 +27,14 @@ java 	-Xmx${RAM_GB}g \
 			${BOUNDS} \
 			--area=${AREANAME}
 
-echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+
+days=$(( elapsed / 86400 ))
+hours=$(( (elapsed % 86400) / 3600 ))
+minutes=$(( (elapsed % 3600) / 60 ))
+seconds=$(( elapsed % 60 ))
+
+echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM in ${days}d ${hours}h ${minutes}min ${seconds}s"
 
 mv -f "/tmp/data/output.mbtiles" "/output/${AREANAME}.mbtiles"

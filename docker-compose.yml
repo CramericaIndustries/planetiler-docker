@@ -60,6 +60,7 @@ services:
     environment:
       - AREANAME=switzerland
       - RAM_GB=4
+      - FORMAT=pmtiles
 
   gen-sweden:
     <<: *gen-TEMPLATE
@@ -89,3 +90,10 @@ services:
     environment:
       - AREANAME=us-pacific
       - RAM_GB=4
+
+  gen-austria:
+    <<: *gen-TEMPLATE
+    environment:
+      - AREANAME=austria
+      - RAM_GB=8
+      - FORMAT=pmtiles

@@ -1,4 +1,4 @@
-FROM openjdk:26-jdk-trixie
+FROM openjdk:26-ea-jdk-trixie
 
 ARG PLANETILER_VERSION
 

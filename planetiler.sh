@@ -5,12 +5,13 @@
 # BOUNDS, optional environment variable which must be set via docker-compose (example value "--bounds=world")
 # @see avilable-options.txt, for all possible planetiler.jar parameters
 
-echo "!!! generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM"
+echo "!!! generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM and ${CPU_COUNT:-all} CPUs"
 start_time=$(date +%s)
 
 java 	-Xmx${RAM_GB}g \
-		-Xms${RAM_GB}g \
+		-Xms1g \
 		-XX:OnOutOfMemoryError="kill -9 %p" \
+		-XX:ActiveProcessorCount=${CPU_COUNT:-0} \
 		-jar /tmp/planetiler.jar \
 			--download \
 			--fetch-wikidata \
@@ -37,4 +38,4 @@ hours=$(( (elapsed % 86400) / 3600 ))
 minutes=$(( (elapsed % 3600) / 60 ))
 seconds=$(( elapsed % 60 ))
 
-echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM in ${days}d ${hours}h ${minutes}min ${seconds}s"
+echo "!!! Finished Generating vector tiles of area '${AREANAME}', using ${RAM_GB}GB of RAM and ${CPU_COUNT:-all} CPUs in ${days}d ${hours}h ${minutes}min ${seconds}s"
